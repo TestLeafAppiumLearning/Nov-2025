@@ -1,0 +1,53 @@
+Option 1:
+1. Use the developer mac to build the WebDriverAgent.ipa for the real device and get that application stored in local
+2. Use preBuiltWDA capability to use that app and the path of the WDA app in local
+Challenge:
+1. If the local Xcode or appium version has updated, this will not work. You need to again build the app and store in local
+2. Same WDA will not work for all the iOS versions
+
+Option 2:
+1. WebDriverAgent application is already installed in mobile
+2. Use preBuiltWDA capability as true
+Challenge: If the iOS version has updated in mobile or the Xcode is updated this might not work and the app installed is built with older versions of Xcode
+
+Note: Above 2 option will not work in all cases
+
+Option 3:
+To build the WDA in local machine everytime and access it or run that app in my mobile
+
+Certificate / profile needed
+1. Developer Certificate --> To install local built apps in mobile
+2. Mobile Provisioning profile --> List of devices UDID which is approved by the developer to use the development certificate
+
+Solution 1:
+1. Open XCode
+2. Navigate to Settings
+3. Click Accounts Tab
+4. Click Add or + and add your apple account which has the valid developer license
+5. Xcode will automatically create the Developer Certificate and Mobile Provisioning profile for the UDID that is connected
+Note: In WDA project it should be set as "Automatically manage signing" for WebDriverAgentRunner in Signing and Capabilities tab
+
+Solution 2:
+1. Provide the needed files and get the Developer Certificate and Mobile Provisioning profile from the developer (Note: Ensure the UDID is already added in the profile)
+2. Double click or Install the Developer Certificate (Note: It might ask for password if provided by the developer)
+3. Open KeyChain Access app --> In Login --> Certificate tab --> Ensure the certificate is listed and it is valid (Note: Check with developer if the certificate is not valid)
+4. Double click on the Mobile Provisioning profile
+5. Navigate to ~/Library/MobileDevice/Provisioning\ Profiles in finder and ensure the mobile provision file is listed
+6. Open Finder app and navigate to ~/.appium/node_modules/appium-xcuitest-driver/node_modules/appium-webdriveragent
+7. Open WebDriverAgent.xcodeproj in Xcode
+8. Click on the folder WebDriverAgent
+9. On the right --> Under Targets --> Click WebDriverAgentRunner
+10. Click Signing and Capabiliites tab
+11. Disable "Automatically manage signing" checkbox
+12. On the Provisioning profile of iOS, Select the profile that you have installed.
+13. For local execution or validation follow the below steps
+    1. In General tab --> Deployment Info --> Select the major iOS version of the mobile
+    2. In the left top you might see a play button
+    3. In the top bar, select the running project as WebDriverAgent and the mobile as the one that is connected
+    4. Click and hold on the play button
+    5. Now select the Test option
+    6. If the build is successful click on the Stop icon and close the Xcode
+
+
+
+

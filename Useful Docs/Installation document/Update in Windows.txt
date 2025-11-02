@@ -1,0 +1,8 @@
+1. Update Node.js to the latest version
+2. Update the Android Studio to the latest version (optional)
+3. Open Android Studio --> SDK Manager --> Update the SDK, cmd line tools, platform-tools, emulator to the latest version
+4. Update JDK to latest version (optional) recommended JDK greater than v11
+5. npm install -g appium
+6. appium driver update installed --unsafe
+7. npm install -g appium-doctor (optional)
+8. Open my project --> update all my dependencies in pom.xml to the latest version

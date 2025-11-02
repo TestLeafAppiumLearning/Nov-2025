@@ -1,0 +1,28 @@
+Steps to enable the USB debugging with Mac machine
+
+1. Open Xcode
+2. Connect your iPhone with USB cable
+3. There should a pop-up to trust the computer in mobile
+4. Click Trust and provide the pin or passcode or face id to authenticate
+5. In Xcode --> Navigate to Window tab --> Click Devices and Simulators
+6. In Devices Tab --> Wait for the process to complete
+7. Note: If you donot see the device, use a different USB cable or reconnect the cable
+8. In mobile device --> open Settings app
+9. Scroll down and Navigate to Developer menu --> Ensure "Enable UI Automation" is enabled
+10. In Settings App --> Privacy and Security --> Developer Mode --> should be ON
+
+Steps to enable the USB debugging without Mac machine
+
+1. Install "Apple Developer" application from App Store
+2. Create a Apple Id --> Free
+3. Purchase the Developer License from Apple website for the apple id that was created by paying the developer fees ($ 99 / $249) based on the program chosen
+4. Login with that apple id which has developer license in the Apple developer app in mobile
+5. Follow the on - screen instructions in the Apple Developer app
+    1. Settings App --> Privacy and Security --> Developer Mode --> ON
+    2. Settings App --> Developer --> Enable UI Automation ---> ON
+6. Developer options are enabled successfully but when you connect this device to any mac then you might require to trust the computer
+
+
+Steps to enable debugging for Hybrid/Web Apps
+1. Settings -> Safari -> Advanced -> Web Inspector --> ON
+2. Settings -> Safari -> Advanced -> Remote Automation --> ON

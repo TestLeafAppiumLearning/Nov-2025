@@ -1,0 +1,13 @@
+1. Update the Mac OS to the latest version
+2. Update the Xcode cmd-line to the latest version
+3. Open App store --> updates --> Update Xcode if available
+4. Update JDK to latest version (optional) recommended JDK greater than v11
+5. Update the Android Studio to the latest version (optional)
+6. Open Android Studio --> SDK Manager --> Update the SDK, cmd line tools, platform-tools, emulator to the latest version
+7. brew update
+8. brew upgrade
+9. npm install -g npm
+10. npm install -g appium
+11. appium driver update installed --unsafe
+12. npm install -g appium-doctor (optional)
+13. Open my project --> update all my dependencies in pom.xml to the latest version
