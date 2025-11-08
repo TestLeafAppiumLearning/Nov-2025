@@ -4,6 +4,8 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
@@ -12,6 +14,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.Collections;
 
 public class WrappersInitial {
 
@@ -87,9 +90,9 @@ public class WrappersInitial {
         element.click();
     }
 
-    public void sleep(int sec) {
+    public void sleep(long sec) {
         try {
-            Thread.sleep(sec * 1000L);
+            Thread.sleep(sec * 1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -97,6 +100,89 @@ public class WrappersInitial {
 
     public void closeSession() {
         driver.quit();
+    }
+
+    private void performSwipe(int startX, int startY, int endX, int endY) {
+        PointerInput input = new PointerInput(PointerInput.Kind.TOUCH, "index finger");
+        Sequence seq = new Sequence(input, 1);
+        seq.addAction(input.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+        seq.addAction(input.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        seq.addAction(input.createPointerMove(Duration.ofMillis(2000), PointerInput.Origin.viewport(), endX, endY));
+        seq.addAction(input.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        driver.perform(Collections.singletonList(seq));
+    }
+
+
+    public void swipe(String direction) {
+        int startX = 0, startY = 0, endX = 0, endY = 0;
+        int maxHeight = driver.manage().window().getSize().getHeight();
+        int maxWidth = driver.manage().window().getSize().getWidth();
+        switch (direction.toLowerCase()) {
+            case "up":
+                startX = (int) (maxWidth * 0.5);
+                startY = (int) (maxHeight * 0.8);
+                endX = (int) (maxWidth * 0.5);
+                endY = (int) (maxHeight * 0.2);
+                break;
+            case "down":
+                startX = (int) (maxWidth * 0.5);
+                startY = (int) (maxHeight * 0.2);
+                endX = (int) (maxWidth * 0.5);
+                endY = (int) (maxHeight * 0.8);
+                break;
+            case "left":
+                startX = (int) (maxWidth * 0.9);
+                startY = (int) (maxHeight * 0.5);
+                endX = (int) (maxWidth * 0.1);
+                endY = (int) (maxHeight * 0.5);
+                break;
+            case "right":
+                startX = (int) (maxWidth * 0.1);
+                startY = (int) (maxHeight * 0.5);
+                endX = (int) (maxWidth * 0.9);
+                endY = (int) (maxHeight * 0.5);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + direction.toLowerCase());
+        }
+        performSwipe(startX, startY, endX, endY);
+    }
+
+    public void swipeWithinWebElement(WebElement element, String direction) {
+        int startX = 0, startY = 0, endX = 0, endY = 0;
+        int eleStartX = element.getRect().getX();
+        int eleStartY = element.getRect().getY();
+        int eleWidth = element.getRect().getWidth();
+        int eleHeight = element.getRect().getHeight();
+        switch (direction.toLowerCase()) {
+            case "up":
+                startX = eleStartX + (int) (eleWidth * 0.5);
+                startY = eleStartY + (int) (eleHeight * 0.9);
+                endX = eleStartX + (int) (eleWidth * 0.5);
+                endY = eleStartY + (int) (eleHeight * 0.1);
+                break;
+            case "down":
+                startX = eleStartX + (int) (eleWidth * 0.5);
+                startY = eleStartY + (int) (eleHeight * 0.1);
+                endX = eleStartX + (int) (eleWidth * 0.5);
+                endY = eleStartY + (int) (eleHeight * 0.9);
+                break;
+            case "left":
+                startX = eleStartX + (int) (eleWidth * 0.9);
+                startY = eleStartY + (int) (eleHeight * 0.5);
+                endX = eleStartX + (int) (eleWidth * 0.1);
+                endY = eleStartY + (int) (eleHeight * 0.5);
+                break;
+            case "right":
+                startX = eleStartX + (int) (eleWidth * 0.1);
+                startY = eleStartY + (int) (eleHeight * 0.5);
+                endX = eleStartX + (int) (eleWidth * 0.9);
+                endY = eleStartY + (int) (eleHeight * 0.5);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + direction.toLowerCase());
+        }
+        performSwipe(startX, startY, endX, endY);
     }
 
 }
