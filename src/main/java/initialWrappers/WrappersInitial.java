@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -14,6 +15,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.Collections;
 
 public class WrappersInitial {
@@ -112,6 +114,69 @@ public class WrappersInitial {
         driver.perform(Collections.singletonList(seq));
     }
 
+    public void longPress() {
+        PointerInput input = new PointerInput(PointerInput.Kind.TOUCH, "index finger");
+        Sequence seq = new Sequence(input, 1);
+        seq.addAction(input.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), 300, 300));
+        seq.addAction(input.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        seq.addAction(new Pause(input, Duration.ofSeconds(2)));
+        seq.addAction(input.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        driver.perform(Collections.singletonList(seq));
+    }
+
+    //    Pinch
+    //    Finger 1
+    //1. Move my finger to the start co-ord (95% of x and 25% of y since we may not stretch our finger)
+    //2. Click and hold on the start pos
+    //3. Move my finger to the end co-ord (50% of x and 50% of y)
+    //4. Release my finger
+
+    //    Finger 2
+    //1. Move my finger to the start co-ord (5% of x and 75% of y since we may not stretch our finger)
+    //2. Click and hold on the start pos
+    //3. Move my finger to the end co-ord (50% of x and 50% of y)
+    //4. Release my finger
+
+    //    Note: Finger 1 and Finger 2 should be parallel execution
+    public void pinchInApp() {
+        int maxHeight = driver.manage().window().getSize().getHeight();
+        int maxWidth = driver.manage().window().getSize().getWidth();
+        PointerInput input = new PointerInput(PointerInput.Kind.TOUCH, "index finger");
+        Sequence seq = new Sequence(input, 1);
+        seq.addAction(input.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), (int) (maxWidth * 0.95), (int) (maxHeight * 0.25)));
+        seq.addAction(input.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        seq.addAction(input.createPointerMove(Duration.ofMillis(2000), PointerInput.Origin.viewport(), (int) (maxWidth * 0.5), (int) (maxHeight * 0.5)));
+        seq.addAction(input.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        PointerInput input1 = new PointerInput(PointerInput.Kind.TOUCH, "thumb finger");
+        Sequence seq1 = new Sequence(input1, 1);
+        seq1.addAction(input1.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), (int) (maxWidth * 0.05), (int) (maxHeight * 0.75)));
+        seq1.addAction(input1.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        seq1.addAction(input1.createPointerMove(Duration.ofMillis(2000), PointerInput.Origin.viewport(), (int) (maxWidth * 0.5), (int) (maxHeight * 0.5)));
+        seq1.addAction(input1.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        driver.perform(Arrays.asList(seq, seq1));
+    }
+
+    public void zoomInApp() {
+        int maxHeight = driver.manage().window().getSize().getHeight();
+        int maxWidth = driver.manage().window().getSize().getWidth();
+        PointerInput input = new PointerInput(PointerInput.Kind.TOUCH, "index finger");
+        Sequence seq = new Sequence(input, 1);
+        seq.addAction(input.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), (int) (maxWidth * 0.5), (int) (maxHeight * 0.5)));
+        seq.addAction(input.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        seq.addAction(input.createPointerMove(Duration.ofMillis(2000), PointerInput.Origin.viewport(), (int) (maxWidth * 0.95), (int) (maxHeight * 0.25)));
+        seq.addAction(input.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        PointerInput input1 = new PointerInput(PointerInput.Kind.TOUCH, "thumb finger");
+        Sequence seq1 = new Sequence(input1, 1);
+        seq1.addAction(input1.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), (int) (maxWidth * 0.5), (int) (maxHeight * 0.5)));
+        seq1.addAction(input1.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        seq1.addAction(input1.createPointerMove(Duration.ofMillis(2000), PointerInput.Origin.viewport(), (int) (maxWidth * 0.05), (int) (maxHeight * 0.75)));
+        seq1.addAction(input1.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        driver.perform(Arrays.asList(seq, seq1));
+    }
 
     public void swipe(String direction) {
         int startX = 0, startY = 0, endX = 0, endY = 0;
