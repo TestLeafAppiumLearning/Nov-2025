@@ -1,1 +1,1 @@
-appium
+appium --allow-cors

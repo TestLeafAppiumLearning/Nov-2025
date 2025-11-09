@@ -7,8 +7,8 @@ public class CreateSessionWithPermissibleActivityInAndroid extends WrappersIniti
 
     @Test
     public void runTest() {
-        launchApp("Android", "UiAutomator2", "leaforg.apk", "com.testleaf.leaforg",
-                "com.testleaf.leaforg.MainActivity", "", "", "");
+        launchApp("Android", "UiAutomator2", "", "in.amazon.mShop.android.shopping",
+                "com.amazon.mShop.home.HomeActivity", "", "", "");
         closeSession();
     }
 }
