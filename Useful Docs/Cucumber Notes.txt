@@ -1,0 +1,59 @@
+Cucumber
+
+Rules
+1. Feature files created (Manual and Automation)
+2. Step def should be created and implementation
+3. Test Runner to execute the feature files
+
+Maven Project (Simple)
+
+src/main/java --> Supporting files that is needed to run your test cases (utilities, pages etc)
+	stepDef
+		Stepdef.java
+			@Given("the application is launched successfully")
+			public void launchapp() {
+			.... code to launch the app
+			}				
+			.... similarly create for all the keywords
+			
+
+
+src/main/resources --> Dynamic content that is needed to support the files in src/main/java (locators env file, property files etc)
+
+src/test/java --> Test cases that is going to be executed
+	testRunner
+		TestRunner.java
+			
+					
+src/test/resources --> Dynamic content that is needed to support the files in src/test/java (Test data, feature files)
+	features
+		Login.feature
+
+Login.feature
+
+Feature: Verify the login functionality
+
+ Scenario: Positive flow
+  Given the application is launched successfully
+  When the user enters the email address as "rajkumar@testleaf.com"
+  And the user enters the password as "Leaf@123"
+  And the user clicks on the login button
+  Then Verify Home page is displayed
+
+ Scenario: Negative flow
+  Given the application is launched successfully
+  When the user enters the email address as "lokesh@testleaf.com"
+  And the user enters the password as "Leaf@123"
+  And the user clicks on the login button
+  But Error message is displayed
+
+Feature file
+
+Feature: Name or description of that scenario
+ Scenario: Test case name
+  Given --> Pre conditions
+  When --> Performing any action
+  Then --> Expected result for the action performed
+  And --> supporting keyword for everyone which helps to combine multiple
+  But --> Expected result for the action performed for negative scenarios
+  * --> Wildcard (any)
