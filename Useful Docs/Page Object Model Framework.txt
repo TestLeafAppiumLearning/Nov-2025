@@ -1,0 +1,68 @@
+Page Object Model Framework
+
+Rules
+1. Every page should be a separate class
+2. There should be a reusable methods class 
+3. Every page should extend that reusable method class
+4. Verify the page it is landed
+5. Every action should be a separate method
+6. Every method should have a return type and return to the page it lands post completion of that action
+
+
+Steps
+1. Create my project --> Maven
+2. Create my resusable method class (BaseClass or WrapperClass) in src/main/java
+3. Create my page (Every page should be a separate class, extends reusable methods class,)
+4. Create a constructor in each page and verify a unique element of that page is displayed
+5. Create a separate method for each action in the respective page
+6. Every method should have a return type and return to the page it lands post completion of that action
+7. Create your test cases and execute it
+
+Maven Project (Simple)
+
+src/main/java --> Supporting files that is needed to run your test cases (utilities, pages etc)
+	wrappers
+		GenericWrappers.java (or) BaseWrappers.java
+	pages
+		LoginPage.java extends GenericWrappers
+			public LoginPage() {
+				eleIsDisplayed(getWebElement(.......));
+			}
+
+			public LoginPage enterUserName() {
+			.......
+			return new LoginPage();
+			}
+
+			public LoginPage enterPassword() {
+			.......
+			return new LoginPage();
+			}
+
+			public LoginPage clickLoginForNegative() {
+			.......
+			return new LoginPage();
+			}
+
+			public HomePage clickLogin() {
+			.......
+			return new HomePage();
+			}
+
+
+		HomePage.java  extends GenericWrappers
+			public HomePage() {
+				eleIsDisplayed(getWebElement(.......));
+			}
+			
+			public HomePage verifyName() {
+			.......
+			return new HomePage();
+			}
+
+	
+src/main/resources --> Dynamic content that is needed to support the files in src/main/java (locators env file, property files etc)
+
+src/test/java --> Test cases that is going to be executed
+
+src/test/resources --> Dynamic content that is needed to support the files in src/test/java (Test data, feature files)
