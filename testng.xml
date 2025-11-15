@@ -1,22 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
+    <parameter name="platformName" value="Android"></parameter>
+    <parameter name="automationName" value="UiAutomator2"></parameter>
+    <parameter name="appPackage" value="com.testleaf.leaforg"></parameter>
+    <parameter name="appActivity" value="com.testleaf.leaforg.MainActivity"></parameter>
+    <parameter name="app" value="leaforg.apk"></parameter>
     <test verbose="2" preserve-order="true" name="sample">
         <classes>
-            <class name="testcases.TC001">
-                <methods>
-                    <include name="runCode"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
-    <test verbose="2" preserve-order="true" name="sample 1">
-        <classes>
-            <class name="testcases.TC002">
-                <methods>
-                    <include name="runCode"/>
-                </methods>
-            </class>
+            <class name="testRunner.TestRunner"/>
         </classes>
     </test>
 </suite>

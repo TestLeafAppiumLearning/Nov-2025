@@ -56,7 +56,7 @@ public class IosNativeWrappers extends AndroidWebWrappers {
             params.put("order", "next");      // Direction to move
             params.put("offset", 0.15);       // Scroll offset percentage
             params.put("element", getWebElement(locator, locatorValue));  // Picker wheel element
-            driver.executeScript("mobile: selectPickerWheelValue", params);
+            driver.get().executeScript("mobile: selectPickerWheelValue", params);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -76,7 +76,7 @@ public class IosNativeWrappers extends AndroidWebWrappers {
             params.put("order", "next");      // Direction to move
             params.put("offset", 0.15);      // Scroll offset percentage
             params.put("element", ele);       // Picker wheel element
-            driver.executeScript("mobile: selectPickerWheelValue", params);
+            driver.get().executeScript("mobile: selectPickerWheelValue", params);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -97,7 +97,7 @@ public class IosNativeWrappers extends AndroidWebWrappers {
             params.put("order", "previous");  // Direction to move
             params.put("offset", 0.15);       // Scroll offset percentage
             params.put("element", getWebElement(locator, locatorValue));  // Picker wheel element
-            driver.executeScript("mobile: selectPickerWheelValue", params);
+            driver.get().executeScript("mobile: selectPickerWheelValue", params);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -117,7 +117,7 @@ public class IosNativeWrappers extends AndroidWebWrappers {
             params.put("order", "previous");  // Direction to move
             params.put("offset", 0.15);      // Scroll offset percentage
             params.put("element", ele);       // Picker wheel element
-            driver.executeScript("mobile: selectPickerWheelValue", params);
+            driver.get().executeScript("mobile: selectPickerWheelValue", params);
             return true;
         } catch (Exception e) {
             e.printStackTrace();

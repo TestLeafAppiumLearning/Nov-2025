@@ -39,7 +39,7 @@ public class AndroidWebWrappers extends AndroidNativeWrappers {
     public boolean deleteChromeCookies() {
         try {
             // Delete all browser cookies
-            driver.manage().deleteAllCookies();
+            driver.get().manage().deleteAllCookies();
             return true;
         } catch (Exception e) {
             e.printStackTrace();

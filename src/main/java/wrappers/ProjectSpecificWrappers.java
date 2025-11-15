@@ -8,10 +8,16 @@ public class ProjectSpecificWrappers extends GenericWrappers {
         startServer();
     }
 
-    @Parameters({"udid", "systemPort"})
+    @Parameters({"platformName", "udid", "appPackage", "appActivity", "automationName", "chromeDriverPort", "systemPort",
+            "xcodeOrgId", "xcodeSigningId", "bundleId", "app", "wdaLocalPort", "useExistingApp"})
     @BeforeMethod
-    public void bm(@Optional("") String udid, @Optional("") String systemPort) {
-        launchAndroidAppInParallel(udid, "com.testleaf.leaforg", "com.testleaf.leaforg.MainActivity", "", systemPort, "leaforg.apk");
+    public void bm(@Optional("Android") String platformName, @Optional("") String udid, @Optional("") String appPackage,
+                   @Optional("") String appActivity, @Optional("UiAutomator2") String automationName,
+                   @Optional("") String chromeDriverPort, @Optional("") String systemPort, @Optional("") String xcodeOrgId,
+                   @Optional("") String xcodeSigningId, @Optional("") String bundleId, @Optional("") String app,
+                   @Optional("") String wdaLocalPort, @Optional("true") boolean useExistingApp) {
+        launchApp(platformName, udid, appPackage, appActivity, automationName, chromeDriverPort, systemPort, xcodeOrgId,
+                xcodeSigningId, bundleId, app, wdaLocalPort, useExistingApp);
     }
 
     @AfterMethod

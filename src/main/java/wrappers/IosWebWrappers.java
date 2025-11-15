@@ -120,7 +120,7 @@ public class IosWebWrappers extends IosNativeWrappers {
     private void handleKeyboardButtonClick(String locator, String locatorValue) {
         try {
             // Store current context
-            String context = ((SupportsContextSwitching) driver).getContext();
+            String context = ((SupportsContextSwitching) driver.get()).getContext();
             boolean isNative = Objects.requireNonNull(context).equalsIgnoreCase("NATIVE_APP");
 
             // Switch to native context if needed
