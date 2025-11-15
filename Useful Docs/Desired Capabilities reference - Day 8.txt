@@ -1,2 +1,0 @@
-Android - https://github.com/appium/appium-uiautomator2-driver
-iOS - https://appium.github.io/appium-xcuitest-driver/latest/

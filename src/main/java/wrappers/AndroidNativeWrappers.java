@@ -26,10 +26,10 @@ public class AndroidNativeWrappers extends CommonWebWrappers {
      * @param app            Path to application file
      * @return true if launch succeeds
      */
-    public boolean launchAndroidApp(String appPackage, String appActivity, String automationName,
+    public boolean launchAndroidApp(String appPackage, String appActivity,
                                     String app) {
         // Launch with default configuration (no parallel execution)
-        return launchApp("Android", "", appPackage, appActivity, automationName, "",
+        return launchApp("Android", "", appPackage, appActivity, "UiAutomator2", "",
                 "", "", "", "", app, "", true);
     }
 
