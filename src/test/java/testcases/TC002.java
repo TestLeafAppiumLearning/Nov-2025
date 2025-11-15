@@ -1,17 +1,16 @@
 package testcases;
 
+import org.testng.annotations.Test;
 import pages.LoginPage;
-import wrappers.GenericWrappers;
+import wrappers.ProjectSpecificWrappers;
 
-public class TC002 {
+public class TC002 extends ProjectSpecificWrappers {
 
-    public static void main(String[] args) {
-        new GenericWrappers().launchAndroidApp("com.testleaf.leaforg", "com.testleaf.leaforg.MainActivity","leaforg.apk");
-
-        new LoginPage()
+    @Test
+    public void runCode() {
+        new LoginPage(driver)
                 .enterUserName("lokesh@testleaf.com")
                 .enterPassword("Leaf@123")
-                .clickLoginForNegative()
-                .closeApp();
+                .clickLoginForNegative();
     }
 }

@@ -46,10 +46,10 @@ public class AndroidNativeWrappers extends CommonWebWrappers {
      * @return true if launch succeeds
      */
     public boolean launchAndroidAppInParallel(String udid, String appPackage, String appActivity,
-                                              String automationName, String chromeDriverPort,
+                                              String chromeDriverPort,
                                               String systemPort, String app) {
         // Launch with parallel execution configuration
-        return launchApp("Android", udid, appPackage, appActivity, automationName, chromeDriverPort,
+        return launchApp("Android", udid, appPackage, appActivity, "UiAutomator2", chromeDriverPort,
                 systemPort, "", "", "", app, "", true);
     }
 

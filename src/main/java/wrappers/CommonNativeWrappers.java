@@ -36,8 +36,8 @@ public class CommonNativeWrappers {
     public static String serverUrl = "http://127.0.0.1:4723";
 
     // Appium driver instance for mobile automation
-    public static AppiumDriver driver;
-    boolean startAppiumServerProgramatically = true;
+    public AppiumDriver driver;
+    boolean startAppiumServerProgramatically = false;
     private AppiumDriverLocalService service;
 
     /**
