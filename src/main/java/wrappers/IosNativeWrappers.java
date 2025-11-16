@@ -3,6 +3,7 @@ package wrappers;
 import org.openqa.selenium.WebElement;
 
 import java.util.HashMap;
+import java.util.Optional;
 
 /**
  * Provides iOS-specific native automation capabilities.
@@ -54,7 +55,7 @@ public class IosNativeWrappers extends AndroidWebWrappers {
         try {
             HashMap<String, Object> params = new HashMap<>();
             params.put("order", "next");      // Direction to move
-            params.put("offset", 0.15);       // Scroll offset percentage
+            params.put("offset", Optional.of(0.15));       // Scroll offset percentage
             params.put("element", getWebElement(locator, locatorValue));  // Picker wheel element
             driver.executeScript("mobile: selectPickerWheelValue", params);
             return true;
@@ -74,7 +75,7 @@ public class IosNativeWrappers extends AndroidWebWrappers {
         try {
             HashMap<String, Object> params = new HashMap<>();
             params.put("order", "next");      // Direction to move
-            params.put("offset", 0.15);      // Scroll offset percentage
+            params.put("offset", Optional.of(0.15));      // Scroll offset percentage
             params.put("element", ele);       // Picker wheel element
             driver.executeScript("mobile: selectPickerWheelValue", params);
             return true;
@@ -95,7 +96,7 @@ public class IosNativeWrappers extends AndroidWebWrappers {
         try {
             HashMap<String, Object> params = new HashMap<>();
             params.put("order", "previous");  // Direction to move
-            params.put("offset", 0.15);       // Scroll offset percentage
+            params.put("offset", Optional.of(0.15));       // Scroll offset percentage
             params.put("element", getWebElement(locator, locatorValue));  // Picker wheel element
             driver.executeScript("mobile: selectPickerWheelValue", params);
             return true;
@@ -115,7 +116,7 @@ public class IosNativeWrappers extends AndroidWebWrappers {
         try {
             HashMap<String, Object> params = new HashMap<>();
             params.put("order", "previous");  // Direction to move
-            params.put("offset", 0.15);      // Scroll offset percentage
+            params.put("offset", Optional.of(0.15));      // Scroll offset percentage
             params.put("element", ele);       // Picker wheel element
             driver.executeScript("mobile: selectPickerWheelValue", params);
             return true;

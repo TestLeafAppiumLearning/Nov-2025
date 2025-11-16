@@ -19,10 +19,13 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -159,7 +162,7 @@ public class CommonNativeWrappers {
                 if (!bundleId.isEmpty()) {
                     dc.setCapability("appium:bundleId", bundleId);
                 }
-                dc.setCapability("appium:wdaLaunchTimeout", 90000);
+                dc.setCapability("appium:wdaLaunchTimeout", Optional.of(90000));
                 // Initialize iOS driver
                 driver = new IOSDriver(new URI(serverUrl).toURL(), dc);
             }
@@ -171,6 +174,57 @@ public class CommonNativeWrappers {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public void launchUiCatalogInIosUsingSauceLabs() {
+        MutableCapabilities caps = new MutableCapabilities();
+        caps.setCapability("platformName", "iOS");
+        caps.setCapability("appium:app", "storage:filename=UICatalog.zip");  // The filename of the mobile app
+        caps.setCapability("appium:deviceName", "iPhone Simulator");
+        caps.setCapability("appium:platformVersion", "current_major");
+        caps.setCapability("appium:automationName", "XCUITest");
+        MutableCapabilities sauceOptions = new MutableCapabilities();
+        sauceOptions.setCapability("username", "oauth-novappium-6d9d8");
+        sauceOptions.setCapability("accessKey", "32c5386d-fc93-4124-89b6-793a190d3a5f");
+        sauceOptions.setCapability("build", "<your build id>");
+        sauceOptions.setCapability("name", "<your test name>");
+        sauceOptions.setCapability("deviceOrientation", "PORTRAIT");
+        caps.setCapability("sauce:options", sauceOptions);
+
+        // Start the session
+        URL url = null;
+        try {
+            url = new URL("https://ondemand.eu-central-1.saucelabs.com:443/wd/hub");
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+        driver = new IOSDriver(url, caps);
+    }
+
+    public void launchLeafOrgInAndroidUsingSauceLabs() {
+        MutableCapabilities caps = new MutableCapabilities();
+        caps.setCapability("platformName", "Android");
+        caps.setCapability("appium:app", "storage:filename=leaforg.apk");  // The filename of the mobile app
+        caps.setCapability("appium:deviceName", "Google Pixel 2 XL Emulator");
+        caps.setCapability("appium:platformVersion", "current_major");
+        caps.setCapability("appium:automationName", "UiAutomator2");
+        MutableCapabilities sauceOptions = new MutableCapabilities();
+        sauceOptions.setCapability("username", "oauth-novappium-6d9d8");
+        sauceOptions.setCapability("accessKey", "32c5386d-fc93-4124-89b6-793a190d3a5f");
+        sauceOptions.setCapability("build", "<your build id>");
+        sauceOptions.setCapability("name", "<your test name>");
+        sauceOptions.setCapability("deviceOrientation", "PORTRAIT");
+        caps.setCapability("sauce:options", sauceOptions);
+
+        // Start the session
+        URL url = null;
+        try {
+            url = new URL("https://ondemand.eu-central-1.saucelabs.com:443/wd/hub");
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+        driver = new AndroidDriver(url, caps);
+
     }
 
     /**

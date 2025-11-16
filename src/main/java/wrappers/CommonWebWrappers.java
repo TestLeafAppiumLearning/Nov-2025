@@ -10,6 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.Duration;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -76,7 +77,7 @@ public class CommonWebWrappers extends CommonNativeWrappers {
                 }
                 dc.setCapability("appium:browserName", "Safari");      // Use Safari browser
                 dc.setCapability("appium:automationName", "XCUITest"); // iOS automation engine
-                dc.setCapability("appium:webviewConnectTimeout", 40000); // WebView connection timeout
+                dc.setCapability("appium:webviewConnectTimeout", Optional.of(40000)); // WebView connection timeout
                 dc.setCapability("appium:autoAcceptAlerts", true);     // Auto-accept system alerts
                 dc.setCapability("appium:startIWDP", true);            // Start iOS web debug proxy
                 dc.setCapability("appium:nativeWebTap", true);         // Enable native taps for web

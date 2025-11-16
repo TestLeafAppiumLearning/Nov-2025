@@ -1,64 +1,68 @@
-Mandatory desired capabilities in Android
+Mandatory desired capabilities in iOS
 _________________________________________
 
-Create a session with my Android Device for sequential execution (Note: Always the first device shown in "adb devices" is used)
-1. appium:platformName --> Android 
-2. appium:automationName --> UiAutomator2
+Create a session with my iOS Device for sequential execution (Note: If udid is not passed then it can pick any device shown in "xcrun xctrace list devices")
+1. platformName --> iOS
+2. appium:automationName --> XCUITest
+3. appium:udid --> (Recommended to choose the right device) Unique Device Identifier
 
 
-Create a session with my Android Device, install the given APK file and launch that for sequential execution (Note: Always the first device shown in "adb devices" is used)
-1. appium:platformName --> Android 
-2. appium:automationName --> UiAutomator2
-3. appium:app --> Absolute path of the APK ile (or) URL of the APK file if available over internet
+Create a session with my iOS Device, install the given APP/IPA file and launch that for sequential execution (Note: If udid is not passed then it can pick any device shown in "xcrun xctrace list devices")
+1. platformName --> iOS 
+2. appium:automationName --> XCUITest
+3. appium:udid --> (Recommended to choose the right device) Unique Device Identifier
+4. appium:app --> Absolute path of the IPA/APP ile (or) URL of the file if available over internet
 
 
-Create a session with my Android Device, launch the application which is already installed on my device for sequential execution (Note: Always the first device shown in "adb devices" is used)
-1. appium:platformName --> Android 
-2. appium:automationName --> UiAutomator2
-3. appium:appPackage --> Package name of the application provided by the developer in app source e.g com.testleaf.leaforg
-4. appium:appActivity --> First permission provided screen name provided by developer in app source e.g com.testleaf.leaforg.MainActivity
+Create a session with my iOS Device, launch the application which is already installed on my device for sequential execution (Note: If udid is not passed then it can pick any device shown in "xcrun xctrace list devices")
+1. platformName --> iOS 
+2. appium:automationName --> XCUITest
+3. appium:udid --> (Recommended to choose the right device) Unique Device Identifier
+4. appium:bundleId --> Bundle name of the application provided by the developer in app source e.g com.example.apple-samplecode.UICatalog
 
 _____________________________________________________________________________________________________________________________________________________
 
 
-Create a session with my Android Device for parallel execution
-1. appium:platformName --> Android 
-2. appium:automationName --> UiAutomator2
-3. appium:udid --> Unique Device Identifier shown in "adb devices"
-4. appium:systemPort --> Port no of the VDM Client running in Server Machine
-5. appium:chromeDriverPort --> Chrome Driver Port (Note: It is mandatory only for Hybrid app and if we would switch to WebView)
+Create a session with my iOS Device for parallel execution
+1. platformName --> iOS 
+2. appium:automationName --> XCUITest
+3. appium:udid --> Unique Device Identifier shown in "xcrun xctrace list devices"
+4. appium:wdaLocalPort --> Port no of the VDM Server running in Server Machine
+5. appium:deviceName --> Mandatory only for iOS Simulators. If UDID is passed then this can be skipped. You should pass the exact name of the simulator. Case-sensitive
+6. appium:platformVersion --> Mandatory only for iOS Simulators. If UDID is passed then this can be skipped. You should pass the exact platformVersion of the simulator that needs to be used. Both major and minor versions needs to be passed. eg. 16.2
+
+Create a session with my iOS Device, install the given IPA/APP file and launch that for sequential execution 
+1. platformName --> iOS 
+2. appium:automationName --> XCUITest
+3. appium:app --> Absolute path of the IPA/APP ile (or) URL of the APK file if available over internet
+4. appium:udid --> Unique Device Identifier shown in "xcrun xctrace list devices"
+5. appium:wdaLocalPort --> Port no of the VDM Server running in Server Machine
+6. appium:deviceName --> Mandatory only for iOS Simulators. If UDID is passed then this can be skipped. You should pass the exact name of the simulator. Case-sensitive
+7. appium:platformVersion --> Mandatory only for iOS Simulators. If UDID is passed then this can be skipped. You should pass the exact platformVersion of the simulator that needs to be used. Both major and minor versions needs to be passed. eg. 16.2
 
 
-Create a session with my Android Device, install the given APK file and launch that for sequential execution (Note: Always the first device shown in "adb devices" is used)
-1. appium:platformName --> Android 
-2. appium:automationName --> UiAutomator2
-3. appium:app --> Absolute path of the APK ile (or) URL of the APK file if available over internet
-4. appium:udid --> Unique Device Identifier shown in "adb devices"
-5. appium:systemPort --> Port no of the VDM Client running in Server Machine
-6. appium:chromeDriverPort --> Chrome Driver Port (Note: It is mandatory only for Hybrid app and if we would switch to WebView)
-
-
-Create a session with my Android Device, launch the application which is already installed on my device for sequential execution (Note: Always the first device shown in "adb devices" is used)
-1. appium:platformName --> Android 
-2. appium:automationName --> UiAutomator2
-3. appium:appPackage --> Package name of the application provided by the developer in app source e.g com.testleaf.leaforg
-4. appium:appActivity --> First permission provided screen name provided by developer in app source e.g com.testleaf.leaforg.MainActivity
-5. appium:udid --> Unique Device Identifier shown in "adb devices"
-6. appium:systemPort --> Port no of the VDM Client running in Server Machine
-7. appium:chromeDriverPort --> Chrome Driver Port (Note: It is mandatory only for Hybrid app and if we would switch to WebView)
+Create a session with my iOS Device, launch the application which is already installed on my device for sequential execution 
+1. platformName --> iOS 
+2. appium:automationName --> XCUITest
+3. appium:bundleId --> Bundle name of the application provided by the developer in app source e.g com.example.apple-samplecode.UICatalog
+4. appium:udid --> Unique Device Identifier shown in "xcrun xctrace list devices"
+5. appium:wdaLocalPort --> Port no of the VDM Server running in Server Machine
+6. appium:deviceName --> Mandatory only for iOS Simulators. If UDID is passed then this can be skipped. You should pass the exact name of the simulator. Case-sensitive
+7. appium:platformVersion --> Mandatory only for iOS Simulators. If UDID is passed then this can be skipped. You should pass the exact platformVersion of the simulator that needs to be used. Both major and minor versions needs to be passed. eg. 16.2
 
 ________________________________________________________________________________________________________________________________________________________
 
-Create a session with my Android Device for sequential execution and launch Chrome browser (Note: Always the first device shown in "adb devices" is used)
-1. appium:platformName --> Android 
-2. appium:automationName --> UiAutomator2
-3. appium:browserName --> Chrome
+Create a session with my iOS Device for sequential execution and launch Chrome browser (Note: If udid is not passed then it can pick any device shown in "xcrun xctrace list devices")
+1. platformName --> iOS 
+2. appium:automationName --> XCUITest
+3. appium:browserName --> Safari
+4. appium:udid --> (Recommended to choose the right device) Unique Device Identifier
 
-Create a session with my Android Device for parallel execution in Mobile Web Browser
-1. appium:platformName --> Android 
-2. appium:automationName --> UiAutomator2
-3. appium:browserName --> Chrome
-4. appium:udid --> Unique Device Identifier shown in "adb devices"
-5. appium:chromeDriverPort --> Chrome Driver Port (Note: It is mandatory only for Hybrid app and if we would switch to WebView)
-6. appium:systemPort --> Port no of the VDM Client running in Server Machine (Note: Mandatory only when you might use any Native context if needed)
+Create a session with my iOS Device for parallel execution in Mobile Web Browser
+1. platformName --> iOS 
+2. appium:automationName --> XCUITest
+3. appium:browserName --> Safari
+4. appium:udid --> Unique Device Identifier shown in "xcrun xctrace list devices"
+5. appium:webkitDebugProxyPort --> Debug port which help appium to talk with browser
+6. appium:wdaLocalPort --> Port no of the VDM Server running in Server Machine
 
