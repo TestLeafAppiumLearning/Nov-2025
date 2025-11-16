@@ -1,0 +1,64 @@
+Mandatory desired capabilities in Android
+_________________________________________
+
+Create a session with my Android Device for sequential execution (Note: Always the first device shown in "adb devices" is used)
+1. appium:platformName --> Android 
+2. appium:automationName --> UiAutomator2
+
+
+Create a session with my Android Device, install the given APK file and launch that for sequential execution (Note: Always the first device shown in "adb devices" is used)
+1. appium:platformName --> Android 
+2. appium:automationName --> UiAutomator2
+3. appium:app --> Absolute path of the APK ile (or) URL of the APK file if available over internet
+
+
+Create a session with my Android Device, launch the application which is already installed on my device for sequential execution (Note: Always the first device shown in "adb devices" is used)
+1. appium:platformName --> Android 
+2. appium:automationName --> UiAutomator2
+3. appium:appPackage --> Package name of the application provided by the developer in app source e.g com.testleaf.leaforg
+4. appium:appActivity --> First permission provided screen name provided by developer in app source e.g com.testleaf.leaforg.MainActivity
+
+_____________________________________________________________________________________________________________________________________________________
+
+
+Create a session with my Android Device for parallel execution
+1. appium:platformName --> Android 
+2. appium:automationName --> UiAutomator2
+3. appium:udid --> Unique Device Identifier shown in "adb devices"
+4. appium:systemPort --> Port no of the VDM Client running in Server Machine
+5. appium:chromeDriverPort --> Chrome Driver Port (Note: It is mandatory only for Hybrid app and if we would switch to WebView)
+
+
+Create a session with my Android Device, install the given APK file and launch that for sequential execution (Note: Always the first device shown in "adb devices" is used)
+1. appium:platformName --> Android 
+2. appium:automationName --> UiAutomator2
+3. appium:app --> Absolute path of the APK ile (or) URL of the APK file if available over internet
+4. appium:udid --> Unique Device Identifier shown in "adb devices"
+5. appium:systemPort --> Port no of the VDM Client running in Server Machine
+6. appium:chromeDriverPort --> Chrome Driver Port (Note: It is mandatory only for Hybrid app and if we would switch to WebView)
+
+
+Create a session with my Android Device, launch the application which is already installed on my device for sequential execution (Note: Always the first device shown in "adb devices" is used)
+1. appium:platformName --> Android 
+2. appium:automationName --> UiAutomator2
+3. appium:appPackage --> Package name of the application provided by the developer in app source e.g com.testleaf.leaforg
+4. appium:appActivity --> First permission provided screen name provided by developer in app source e.g com.testleaf.leaforg.MainActivity
+5. appium:udid --> Unique Device Identifier shown in "adb devices"
+6. appium:systemPort --> Port no of the VDM Client running in Server Machine
+7. appium:chromeDriverPort --> Chrome Driver Port (Note: It is mandatory only for Hybrid app and if we would switch to WebView)
+
+________________________________________________________________________________________________________________________________________________________
+
+Create a session with my Android Device for sequential execution and launch Chrome browser (Note: Always the first device shown in "adb devices" is used)
+1. appium:platformName --> Android 
+2. appium:automationName --> UiAutomator2
+3. appium:browserName --> Chrome
+
+Create a session with my Android Device for parallel execution in Mobile Web Browser
+1. appium:platformName --> Android 
+2. appium:automationName --> UiAutomator2
+3. appium:browserName --> Chrome
+4. appium:udid --> Unique Device Identifier shown in "adb devices"
+5. appium:chromeDriverPort --> Chrome Driver Port (Note: It is mandatory only for Hybrid app and if we would switch to WebView)
+6. appium:systemPort --> Port no of the VDM Client running in Server Machine (Note: Mandatory only when you might use any Native context if needed)
+
