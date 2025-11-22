@@ -1,0 +1,42 @@
+iOS Simulator
+1. App/ipa file that is built for a simulator (Simulator has multiple arch,
+so say your iOS simulator version and get the correct app from developer)
+2. XCode with the iOS Simulator version is installed
+
+
+Certificate in iOS App Development
+1. Development certificate --> Used by dev and QA team to test app in local devices
+2. Adhoc Certificate --> Installation via 3rd party app like AppCenter (Advantage is device will be
+provisioned and certificate will be updated automatically)
+3. Prod or Release certificate --> Used only in TestFlight or App Store
+
+iOS Real Devices
+1. App/ipa file that is built for this real device based on the development certificate
+Note: If App is not built using Dev Certificate then you need install the app from
+3rd party app like AppCenter or TestFlight and then proceed with automation
+2. iOS Device --> Developer mode enabled
+3. Update the profile and certificate for WDA in real devices
+Note: Profile and certificate has to be retrieved from Dev team
+
+
+
+Step by step for new device provisioning Say iPhone 17
+1. Is my app under test given by dev team directly in git or any source
+   Connect your device with Mac, Enable te developer mode
+   Extract and share the device UDID to the dev team
+   Ask the dev team to add this device to the development devices list, generate the new certificate, provisioning file
+   and rebuild the app that support this device.
+   Get this latest app
+2. Is my app under test shared in any 3rd party app like AppCenter
+   Login to that 3rd party app in the new device
+   3rd party app will detect this device and ask you permission to add this device to the list of authorized devices
+   Proceed and complete those steps
+   Then install the app from the 3rd party app
+3. Is my valid Apple Developer Account logged in my Xcode and WebDriverAgent project is set as Automatically manage signing
+   then no further steps needed
+4. If my account is not logged in and you have added the certificate and profile shared by Dev Team, then
+   Connect your device with Mac, Enable te developer mode
+   Extract and share the device UDID to the dev team
+   Ask the dev team to add this device to the development devices list if not added earlier (Step 1 and 2 will do this for sure),
+   generate the new certificate, provisioning profile for WebDriverAgent app.
+   Get this latest certificate, provisioning profile for WebDriverAgent app and install it.

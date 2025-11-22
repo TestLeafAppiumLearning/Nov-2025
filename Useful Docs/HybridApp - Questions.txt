@@ -2,9 +2,9 @@ Pre-condition --> An application is given to you
 
 Q --> Can you confirm the given app is a Native App or a Hybrid app
 A --> 
-With Automation --> Create a session with the automation code with client, Launch the app, redirect to the page where you suspect there can be WebView, get the page source of that page. Check if there is any tag or class as android.webkit.WebView. If present then it is an Hybrid app else Native app (Note: Check all the suspected pages)
+With Automation --> Create a session with the automation code with client, Launch the app, redirect to the page where you suspect there can be WebView, get the page source of that page. Check if there is any tag or class as android.webkit.WebView for Android or XCUIElementTypeWebView for iOS. If present then it is an Hybrid app else Native app (Note: Check all the suspected pages)
 
-Without automation -->Create a session in Appium Inspector, Launch the app, redirect to the page where you suspect there can be WebView, Search for android.webkit.WebView class name in the source. If present then it is an Hybrid app else Native app (Note: Check all the suspected pages)
+Without automation -->Create a session in Appium Inspector, Launch the app, redirect to the page where you suspect there can be WebView, Search for android.webkit.WebView or XCUIElementTypeWebView class name in the source. If present then it is an Hybrid app else Native app (Note: Check all the suspected pages)
 
 Q --> You have identified that app is a Hybrid app, can I test this app using WebViews
 A --> 

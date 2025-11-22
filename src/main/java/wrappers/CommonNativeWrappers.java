@@ -40,7 +40,7 @@ public class CommonNativeWrappers {
 
     // Appium driver instance for mobile automation
     public AppiumDriver driver;
-    boolean startAppiumServerProgramatically = true;
+    boolean startAppiumServerProgramatically = false;
     private AppiumDriverLocalService service;
 
     /**
